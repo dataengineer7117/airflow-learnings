@@ -92,4 +92,4 @@ services:
             - POSTGRES_PASSWORD=airflow
             - POSTGRES_DB=airflow
             - REDIS_PASSWORD=redispass
-        command: worker
+        command: worker -q worker_ssd,worker_cpu,worker_spark,default
