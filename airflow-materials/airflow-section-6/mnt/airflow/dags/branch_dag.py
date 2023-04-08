@@ -19,15 +19,18 @@ IP_GEOLOCATION_APIS = {
 # If given, the API is returned and the next task corresponding
 # to this API will be executed
 def check_api():
+    apis = []
     for api, link in IP_GEOLOCATION_APIS.items():
         r = requests.get(link)
         try:
             data = r.json()
             if data and 'country' in data and len(data['country']):
-                return api
+                # return api
+                apis.append(api)
+                return apis
         except ValueError:
             pass
-    return 'none'
+    return apis if len(apis) > 0 else 'none'
 
 with DAG(dag_id='branch_dag', 
     default_args=default_args, 
@@ -45,7 +48,7 @@ with DAG(dag_id='branch_dag',
         task_id='none'
     )
 
-    save = DummyOperator(task_id='save')
+    save = DummyOperator(task_id='save', trigger_rule='one_success')
 
     check_api >> none >> save
 
