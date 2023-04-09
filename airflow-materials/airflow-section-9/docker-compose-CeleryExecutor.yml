@@ -29,6 +29,7 @@ services:
             - POSTGRES_PASSWORD=airflow
             - POSTGRES_DB=airflow
             - REDIS_PASSWORD=redispass
+            - AIRFLOW__CORE__FERNET_KEY=myLEes8lLPtj4YLJxSLLFTLhcJAV7vtTQPX4ZEDI3I4=
         volumes:
             - ./mnt/airflow/dags:/usr/local/airflow/dags
             - ./mnt/airflow/airflow.cfg:/usr/local/airflow/airflow.cfg
@@ -76,6 +77,7 @@ services:
             - POSTGRES_PASSWORD=airflow
             - POSTGRES_DB=airflow
             - REDIS_PASSWORD=redispass
+            - AIRFLOW__CORE__FERNET_KEY=myLEes8lLPtj4YLJxSLLFTLhcJAV7vtTQPX4ZEDI3I4=
         command: scheduler
 
     worker:
@@ -96,4 +98,5 @@ services:
             - POSTGRES_PASSWORD=airflow
             - POSTGRES_DB=airflow
             - REDIS_PASSWORD=redispass
+            - AIRFLOW__CORE__FERNET_KEY=myLEes8lLPtj4YLJxSLLFTLhcJAV7vtTQPX4ZEDI3I4=
         command: worker
