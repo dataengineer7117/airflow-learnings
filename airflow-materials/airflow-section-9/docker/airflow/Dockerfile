@@ -60,6 +60,7 @@ RUN set -ex \
     && pip install --upgrade "pip==20.2.4" \
     && pip install -U pip setuptools wheel \
     && pip install pytz \
+    && pip install flask-bcrypt \
     && pip install pyOpenSSL \
     && pip install ndg-httpsclient \
     && pip install pyasn1 \
